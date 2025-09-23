@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Banking System</title>
+  <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <div class="container">
+    <h2>Banking System</h2>
+    <div class="balance-card" aria-live="polite" aria-atomic="true">
+      Balance: $0
+    </div>
+    <form>
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" min="1" required />
+
+      <div class="buttons">
+        <input type="submit" name="action" value="Deposit" />
+        <input type="submit" name="action" value="Withdraw" />
+      </div>
