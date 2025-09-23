@@ -1,83 +1,95 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+:root {
+    --bg: #fff;
+    --text: #222;
+    --header-bg: #3498db;
+    --sidebar-bg: #2980b9;
+    --footer-bg: #3498db;
+    --link: #fff;
+  }
+
+  body.dark {
+    --bg: #222;
+    --text: #eee;
+    --header-bg: #444;
+    --sidebar-bg: #333;
+    --footer-bg: #444;
+    --link: #ddd;
+  }
+
+  body {
     margin: 0;
-}
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "footer footer";
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 50px 1fr 30px;
+    height: 100vh;
+  }
 
-.bank-container {
-    background-color: white;
-    padding: 20px;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-h1 {
-    color: #333;
-}
-
-.balance-section h2 {
-    margin: 20px 0;
-    color: green;
-}
-
-.transaction-section {
-    margin-top: 20px;
-}
-
-input {
-    width: 80%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #aaa;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.buttons {
+  header {
+    grid-area: header;
+    background: var(--header-bg);
+    color: var(--link);
     display: flex;
-    justify-content: space-around;
-}
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+  nav {
+    grid-area: sidebar;
+    background: var(--sidebar-bg);
+    padding: 1rem;
+  }
+  nav a {
+    display: block;
+    color: var(--link);
+    margin-bottom: 1rem;
+    text-decoration: none;
+  }
+
+  main {
+    grid-area: main;
+    padding: 1rem;
+  }
+
+  footer {
+    grid-area: footer;
+    background: var(--footer-bg);
+    color: var(--link);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+
+  /* Simple toggle switch style */
+  .toggle {
     cursor: pointer;
-}
-
-button:first-child {
-    background-color: #4caf50;
-    color: white;
-}
-
-button:last-child {
-    background-color: #f44336;
-    color: white;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-@media screen and (max-width: 500px) {
-    .bank-container {
-        padding: 15px;
-    }
-
-    input {
-        width: 100%;
-    }
-
-    .buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
+    background: #fff;
+    border-radius: 12px;
+    width: 40px;
+    height: 20px;
+    position: relative;
+  }
+  .toggle-circle {
+    background: var(--header-bg);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.3s;
+  }
+  input[type="checkbox"]:checked + .toggle .toggle-circle {
+    left: 22px;
+  }
+  input[type="checkbox"] {
+    display: none;
+  }

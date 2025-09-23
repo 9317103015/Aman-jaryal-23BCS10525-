@@ -1,57 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Banking Interface</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple Admin Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <div>Admin Dashboard</div>
+    <label>
+      <input type="checkbox" id="theme-toggle" />
+      <div class="toggle">
+        <div class="toggle-circle"></div>
+      </div>
+    </label>
+  </header>
 
-    <div class="bank-container">
-        <h1>My Bank</h1>
-        <div class="balance-section">
-            <h2>Balance: ₹<span id="balance">0</span></h2>
-        </div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Users</a>
+    <a href="#">Settings</a>
+  </nav>
 
-        <div class="transaction-section">
-            <input type="number" id="amount" placeholder="Enter amount">
-            <div class="buttons">
-                <button onclick="deposit()">Deposit</button>
-                <button onclick="withdraw()">Withdraw</button>
-            </div>
-        </div>
-    </div>
+  <main>
+    <h2>Welcome</h2>
+    <p>This is your dashboard content area. </p>
+  </main>
 
-    <script>
-        let balance = 0;
+  <footer>
+    &copy; 2025 Your Company
+  </footer>
 
-        function deposit() {
-            let amount = parseFloat(document.getElementById("amount").value);
-            if (!isNaN(amount) && amount > 0) {
-                balance += amount;
-                document.getElementById("balance").innerText = balance;
-                document.getElementById("amount").value = "";
-            } else {
-                alert("Please enter a valid amount!");
-            }
-        }
-
-        function withdraw() {
-            let amount = parseFloat(document.getElementById("amount").value);
-            if (!isNaN(amount) && amount > 0) {
-                if (amount <= balance) {
-                    balance -= amount;
-                    document.getElementById("balance").innerText = balance;
-                    document.getElementById("amount").value = "";
-                } else {
-                    alert("Insufficient balance!");
-                }
-            } else {
-                alert("Please enter a valid amount!");
-            }
-        }
-    </script>
-
+  <script>
+    const checkbox = document.getElementById('theme-toggle');
+    checkbox.addEventListener('change', () => {
+      document.body.classList.toggle('dark', checkbox.checked);
+    });
+  </script>
 </body>
 </html>
